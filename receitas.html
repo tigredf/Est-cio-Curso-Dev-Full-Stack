@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Catálogo de Receitas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body onload="preencheCatalogo()">
+    <header class="cabecalho">
+        <nav class="cabecalho__menu">  
+            <a class="cabecalho__menu__link" href="ordenando.html">Procedimento 1</a>
+            <a class="cabecalho__menu__link" href="receitas.html">Procedimento 2</a> 
+            <a class="cabecalho__menu__link" href="usuarios1.html">Procedimento 3</a>                     
+        </nav>
+    </header>
+
+<h1>Catálogo de Receitas<h1>
+<div class="container-fluid">
+    <div id="pnlCatalogo" class="pnlCatalogo"></div>
+</div>
+
+<script>
+    const receitas = [
+        {
+            titulo: "Brownie de micro-ondas",
+            imagem: "brownie.png",
+            preparo: "Em uma tigela, coloque 100 gramas de chocolate meio amargo picado e 100 gramas de manteiga. Leve ao micro-ondas na potência máxima por 30 segundos e depois misture para derreter o chocolate. Ao chocolate derretido, acrescente meia colher de café solúvel, meia colher de chá de sal, 215 gramas de açúcar e 2 ovos. Misture. Adicione 75 gramas de farinha de trigo e misture até ficar homogêneo. Coloque a massa em uma forma untada com manteiga e, por cima, espalhe 100 gramas de chocolate ao leite em pastilha ou picadinho. Leve ao micro-ondas por 6 minutos.",
+            ingredientes: ["100 gramas de chocolate meio amargo picado", "100 gramas de manteiga", "IMeia colher de chá de café solúvel", "Meia colher de chá de sal", "215 gramas de açúcar","2 ovos","75 gramas de farinha de trigo", "100 gramas de chocolate ao leite em pastilha"]
+        },
+        {
+
+            titulo: "Molho chimichurri",
+            imagem: "chimichurri.png",
+            preparo: "Em uma tigela, coloque 100 gramas de chocolate meio amargo picado e 100 gramas de manteiga. Leve ao micro-ondas na potência máxima por 30 segundos e depois misture para derreter o chocolate. Ao chocolate derretido, acrescente meia colher de café solúvel, meia colher de chá de sal, 215 gramas de açúcar e 2 ovos. Misture. Adicione 75 gramas de farinha de trigo e misture até ficar homogêneo. Coloque a massa em uma forma untada com manteiga e, por cima, espalhe 100 gramas de chocolate ao leite em pastilha ou picadinho. Leve ao micro-ondas por 6 minutos.",
+            ingredientes: ["2 dentes de alho picados", "5 gramas de orégano", "5 gramas de pimenta-calabresa", "Salsinha picada a gosto", "15 mililitros de vinagre de maçã", "15 mililitros de água", "400 mililitros de azeite"]
+        },
+        {
+
+            titulo: "Pudim de caneca no micro-ondas",
+            imagem: "pudim.png",
+            preparo: "Em uma caneca, coloque o açúcar e a água. Misture bem e leve para o micro-ondas em potência máxima por 1 minuto. Desligue o micro-ondas e repita o processo por 30 segundos até derreter toda a calda. Em uma tigela, coloque o leite, o ovo, o leite condensado e a essência de baunilha. Bata todos os ingredientes à mão, com a ajuda de um fouet. Peneire a mistura e coloque na caneca sobre a calda do pudim. Leve ao micro-ondas 3 vezes por 1 minuto cada vez. Retire do micro-ondas, cubra com um plástico-filme e envolva em um pano, deixando descansar por cerca de 10 minutos. Leve à geladeira por, no mínimo, 1 hora. Desenforme e sirva o pudim de caneca no micro-ondas.",
+            ingredientes: ["25 gramas de açúcar", "130 mililitros de leite", "1 ovo", "50 gramas de leite condensado", "Essência de baunilha a gosto"]
+        }
+    ];
+
+    function getListaIngredientes(ingredientes) {
+        return `<ul>${ingredientes.map(ingrediente => `<li>${ingrediente}</li>`).reduce((a, b) => a + b, '')}</ul>`;
+    }
+
+    function getCard(receita) {
+        return `
+            <div class="card">
+                <img class="card-img-top" src="${receita.imagem}" alt="Imagem da receita">
+                <div class="card-body">
+                    <h3 class="card-title">${receita.titulo}</h3>
+                    <div class="card-text">
+                        ${getListaIngredientes(receita.ingredientes)}
+                        <hr>
+                        ${receita.preparo}
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function preencheCatalogo() {
+        const pnlCatalogo = document.getElementById("pnlCatalogo");
+        const htmlReceitas = receitas.map(receita => getCard(receita)).reduce((a, b) => a + b, '');
+        pnlCatalogo.innerHTML = htmlReceitas;
+    }
+</script>
+
+</body>
+<footer class="rodape">Thomas Santana &copy;2023</footer>
+</html>

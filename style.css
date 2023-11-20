@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2? family= Krona+One & family= Montserrat & family= Montserrat+Alternates:ital,wght@0,600;1,400 & display=swap');
+
+:root {
+    --fonte-primaria:'Krona One', sans-serif;
+    --fonte-secundaria: 'Montserrat', sans-serif;
+}
+
+.cabecalho{
+    padding: 2% 0% 0% 10%;
+    margin: 2%;
+    background-color: #f8d7da;
+    
+ }
+
+.cabecalho__menu{
+    display: flex;
+    gap: 80px;
+    max-height: 60px;    
+}
+
+.cabecalho__menu__link{
+    font-family: var(--fonte-secundaria);
+    font-size: 1.5rem;   
+    font-weight: 400;
+    color: black;
+    text-decoration: none;    
+    
+}
+
+body {
+    background-color: #f8d7da;
+}
+.container-fluid {
+    background-color: #ffc107;
+    
+}
+.pnlCatalogo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-width: 100%;
+    justify-content: space-evenly;
+    font-size: 1rem; 
+
+}
+.card {
+    width: 250px;
+    gap: 30px;   
+}
+
+.rodape{
+    
+    background-color: ;
+    padding: 1rem;
+    text-align: center;
+    font-family: var(--fonte-secundaria);
+    font-size: 1rem;
+    font-weight: 400;
+}

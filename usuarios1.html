@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Usuários de Teste via REST</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css"/>
+   
+</head>
+
+<body>    
+    <header class="cabecalho">
+        <nav class="cabecalho__menu">  
+            <a class="cabecalho__menu__link" href="ordenando.html">Procedimento 1</a>
+            <a class="cabecalho__menu__link" href="receitas.html">Procedimento 2</a> 
+            <a class="cabecalho__menu__link" href="usuarios1.html">Procedimento 3</a>                     
+        </nav>
+    </header>
+    <main class="container bg-warning">
+        <h1>Usuários de Teste via REST</h1>
+        <p>Obtido de <a href="https://reqres.in" target="_blank">reqres.in</a></p>
+        <div id="usuarios" class="container-fluid">
+            <div class="row">
+                <div v-for="(user, index) in users" :key="index" class="card col-md-4 p-2 m-3">
+                    <img :src="user.avatar" class="card-img-top" alt="Imagem do usuário">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+                        <p class="card-text">{{ user.email }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+        <script>
+        
+        var app = new Vue({
+            el: '#usuarios',
+            data: {
+                users: []
+            },
+            mounted: function () {
+                this.loadUsers();
+            },
+            methods: {
+                loadUsers: function () {                   
+                    fetch('https://reqres.in/api/users?per_page=10')
+                        .then(response => response.json())
+                        .then(data => {
+                            this.users = data.data;
+                        })
+                        .catch(error => console.error('Erro ao carregar usuários', error));
+                }
+            }
+        });
+        </script>
+    </main>
+</body>
+<footer class="rodape">Thomas Santana &copy;2023</footer>
+</html>
